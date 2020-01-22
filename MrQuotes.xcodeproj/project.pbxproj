@@ -13,6 +13,8 @@
 		219C0CD623D7512800B6014D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 219C0CD423D7512800B6014D /* Main.storyboard */; };
 		219C0CDB23D7512900B6014D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 219C0CD923D7512900B6014D /* LaunchScreen.storyboard */; };
 		219C0CE323D7597F00B6014D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 219C0CE223D7597F00B6014D /* Assets.xcassets */; };
+		21AD436723D800940024F8C5 /* CustomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AD436623D800940024F8C5 /* CustomUIView.swift */; };
+		21AD436923D807470024F8C5 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AD436823D807470024F8C5 /* HomeTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		219C0CDA23D7512900B6014D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		219C0CDC23D7512900B6014D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		219C0CE223D7597F00B6014D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../Downloads/Assets.xcassets; sourceTree = "<group>"; };
+		21AD436623D800940024F8C5 /* CustomUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIView.swift; sourceTree = "<group>"; };
+		21AD436823D807470024F8C5 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				219C0CE223D7597F00B6014D /* Assets.xcassets */,
 				219C0CD923D7512900B6014D /* LaunchScreen.storyboard */,
 				219C0CDC23D7512900B6014D /* Info.plist */,
+				21AD436623D800940024F8C5 /* CustomUIView.swift */,
+				21AD436823D807470024F8C5 /* HomeTableViewCell.swift */,
 			);
 			path = MrQuotes;
 			sourceTree = "<group>";
@@ -139,6 +145,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				219C0CD323D7512800B6014D /* SecondViewController.swift in Sources */,
+				21AD436923D807470024F8C5 /* HomeTableViewCell.swift in Sources */,
+				21AD436723D800940024F8C5 /* CustomUIView.swift in Sources */,
 				219C0CCF23D7512800B6014D /* AppDelegate.swift in Sources */,
 				219C0CD123D7512800B6014D /* FirstViewController.swift in Sources */,
 			);
