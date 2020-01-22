@@ -152,7 +152,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="300" id="VZV-aW-uC8">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="favoriteCell" rowHeight="300" id="VZV-aW-uC8">
                                         <rect key="frame" x="0.0" y="28" width="375" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VZV-aW-uC8" id="H2Q-vE-NCl">
@@ -187,15 +187,35 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gL3-4Y-5le" userLabel="share">
+                                                            <rect key="frame" x="303" y="243.5" width="16" height="16"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="16" id="SMi-fZ-UJ0"/>
+                                                                <constraint firstAttribute="height" constant="16" id="i8R-hj-FWL"/>
+                                                            </constraints>
+                                                            <state key="normal" title="Button" image="share"/>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UdO-K3-rkt" userLabel="favorite">
+                                                            <rect key="frame" x="262" y="243.5" width="16" height="16"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="16" id="8K1-ab-CdJ"/>
+                                                                <constraint firstAttribute="width" constant="16" id="sOE-Zt-keg"/>
+                                                            </constraints>
+                                                            <state key="normal" title="Button" image="heart"/>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" name="quoteBackground"/>
                                                     <constraints>
                                                         <constraint firstItem="AM2-2N-a19" firstAttribute="leading" secondItem="moI-yx-nRh" secondAttribute="leading" constant="16" id="1Ce-u2-o7Q"/>
+                                                        <constraint firstAttribute="bottom" secondItem="UdO-K3-rkt" secondAttribute="bottom" constant="24" id="DDX-Il-u6B"/>
+                                                        <constraint firstAttribute="trailing" secondItem="gL3-4Y-5le" secondAttribute="trailing" constant="24" id="EyW-kc-fjn"/>
                                                         <constraint firstAttribute="trailing" secondItem="btE-4M-twT" secondAttribute="trailing" constant="65" id="Fof-uN-KkU"/>
                                                         <constraint firstItem="AM2-2N-a19" firstAttribute="top" secondItem="moI-yx-nRh" secondAttribute="top" constant="36" id="Mwi-HX-GKi"/>
                                                         <constraint firstItem="btE-4M-twT" firstAttribute="leading" secondItem="moI-yx-nRh" secondAttribute="leading" constant="16" id="dPh-Vg-GcX"/>
+                                                        <constraint firstAttribute="trailing" secondItem="UdO-K3-rkt" secondAttribute="trailing" constant="65" id="oN0-o1-PTy"/>
                                                         <constraint firstItem="btE-4M-twT" firstAttribute="top" secondItem="1Iv-3W-sGb" secondAttribute="bottom" constant="8" id="rZJ-dY-PEn"/>
                                                         <constraint firstItem="1Iv-3W-sGb" firstAttribute="leading" secondItem="moI-yx-nRh" secondAttribute="leading" constant="16" id="rjE-pQ-Kjh"/>
+                                                        <constraint firstAttribute="bottom" secondItem="gL3-4Y-5le" secondAttribute="bottom" constant="24" id="rjZ-nk-4vN"/>
                                                         <constraint firstAttribute="trailing" secondItem="1Iv-3W-sGb" secondAttribute="trailing" constant="65" id="vbY-r7-uIt"/>
                                                         <constraint firstItem="1Iv-3W-sGb" firstAttribute="top" secondItem="AM2-2N-a19" secondAttribute="bottom" constant="16" id="wm5-k3-KRV"/>
                                                     </constraints>
@@ -211,6 +231,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="8rJ-Kc-sve" id="R2i-J0-kVi"/>
+                                    <outlet property="delegate" destination="8rJ-Kc-sve" id="ujz-FO-dua"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

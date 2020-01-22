@@ -43,14 +43,13 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             cell?.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "favorite_fill"), for: .normal)
             cell?.shareButtonOutlet.tintColor = UIColor(named: "Color2")
         }else{
+            cell?.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "heart"), for: .normal)
             cell?.quoteTopImage.tintColor = UIColor(named: "Color1")
             cell?.favoriteButtonOutlet.tintColor = UIColor(named: "Color1")
             cell?.shareButtonOutlet.tintColor = UIColor(named: "Color1")
         }
         return cell!
     }
-
-
 }
 
 extension FirstViewController: HomeTableViewCustomCellProtocol{
@@ -68,8 +67,9 @@ extension FirstViewController: HomeTableViewCustomCellProtocol{
     
     func onClickShareQuoteProtocolFunc(index: Int) {
         print("Share Button Clicked at \(index)")
+        let item = [quotes[index]["quote"],"By \(String(describing: quotes[index]["author"]))"]
+        let shareSheet = UIActivityViewController(activityItems: item, applicationActivities: nil)
+        self.present(shareSheet, animated: true, completion: nil)
     }
-    
-    
 }
 
