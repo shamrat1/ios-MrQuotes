@@ -10,15 +10,34 @@ import UIKit
 
 class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    var favorites: [[String:Any]] = []
+    @IBOutlet weak var tableView: UITableView!
+   // for refreshing
+//    lazy var refreshControl: UIRefreshControl = {
+//        let refreshControl = UIRefreshControl()
+//        refreshControl.addTarget(self, action: #selector(SecondViewController.handleRefresh(_:)), for: UIControl.Event.valueChanged)
+//        refreshControl.tintColor = UIColor.red
+//
+//        return refreshControl
+//    }()
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+//        self.tableView.addSubview(self.refreshControl)
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        favorites = []
+        for object in quotes{
+            if object["isFavorite"] as! Int == 1{
+                favorites.append(object)
+            }
+        }
+        self.tableView.reloadData()
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return favorites.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -26,6 +45,16 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         return cell
     }
+    
+    
+    //for refreshing
+//    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+//        // Do some reloading of data and update the table view's data source
+//        // Fetch more objects from a web service, for example..
+//
+//        self.tableView.reloadData()
+//        refreshControl.endRefreshing()
+//    }
 
 }
 
