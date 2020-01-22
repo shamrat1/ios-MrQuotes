@@ -41,7 +41,13 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath) as! FavoriteTableViewCell
+        cell.quoteTopImage.tintColor = UIColor(named: "Color2")
+        cell.quoteLabel.text = (favorites[indexPath.row]["quote"] as! String)
+        cell.quoteAuthor.text = (favorites[indexPath.row]["author"] as! String)
+        cell.favoriteOutlet.setImage(#imageLiteral(resourceName: "favorite_fill"), for: .normal)
+        cell.favoriteOutlet.tintColor = UIColor.red
+        cell.shareOutlet.tintColor = UIColor(named: "Color2")
         
         return cell
     }

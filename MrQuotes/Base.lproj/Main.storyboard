@@ -152,7 +152,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="favoriteCell" rowHeight="300" id="VZV-aW-uC8">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="favoriteCell" rowHeight="300" id="VZV-aW-uC8" customClass="FavoriteTableViewCell" customModule="MrQuotes" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VZV-aW-uC8" id="H2Q-vE-NCl">
@@ -229,6 +229,13 @@
                                                 <constraint firstAttribute="trailing" secondItem="moI-yx-nRh" secondAttribute="trailing" constant="16" id="fPb-vd-0AX"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="favoriteOutlet" destination="UdO-K3-rkt" id="Vag-1S-zhh"/>
+                                            <outlet property="quoteAuthor" destination="btE-4M-twT" id="BKv-ZR-aGw"/>
+                                            <outlet property="quoteLabel" destination="1Iv-3W-sGb" id="ZGY-Mb-EM6"/>
+                                            <outlet property="quoteTopImage" destination="AM2-2N-a19" id="cNq-Yn-QRd"/>
+                                            <outlet property="shareOutlet" destination="gL3-4Y-5le" id="hPB-QO-Bzb"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

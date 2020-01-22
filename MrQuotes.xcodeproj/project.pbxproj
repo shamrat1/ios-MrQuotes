@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2118C12C23D8B3E7003BEAFB /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2118C12B23D8B3E7003BEAFB /* FavoriteTableViewCell.swift */; };
 		219C0CCF23D7512800B6014D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219C0CCE23D7512800B6014D /* AppDelegate.swift */; };
 		219C0CD123D7512800B6014D /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219C0CD023D7512800B6014D /* FirstViewController.swift */; };
 		219C0CD323D7512800B6014D /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219C0CD223D7512800B6014D /* SecondViewController.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2118C12B23D8B3E7003BEAFB /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		219C0CCB23D7512800B6014D /* MrQuotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MrQuotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		219C0CCE23D7512800B6014D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		219C0CD023D7512800B6014D /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				219C0CDC23D7512900B6014D /* Info.plist */,
 				21AD436623D800940024F8C5 /* CustomUIView.swift */,
 				21AD436823D807470024F8C5 /* HomeTableViewCell.swift */,
+				2118C12B23D8B3E7003BEAFB /* FavoriteTableViewCell.swift */,
 			);
 			path = MrQuotes;
 			sourceTree = "<group>";
@@ -145,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				219C0CD323D7512800B6014D /* SecondViewController.swift in Sources */,
+				2118C12C23D8B3E7003BEAFB /* FavoriteTableViewCell.swift in Sources */,
 				21AD436923D807470024F8C5 /* HomeTableViewCell.swift in Sources */,
 				21AD436723D800940024F8C5 /* CustomUIView.swift in Sources */,
 				219C0CCF23D7512800B6014D /* AppDelegate.swift in Sources */,
