@@ -8,8 +8,14 @@
 
 import UIKit
 
-class FavoriteTableViewCell: UITableViewCell {
+protocol FavoriteCellProtocol{
+    func onClickFavoriteForFavoriteCellProtocol(index: Int)
+    func onClickShareForFavoriteCellProtocol(index: Int)
+}
 
+class FavoriteTableViewCell: UITableViewCell {
+    var cellDelegate: FavoriteCellProtocol?
+    var index: IndexPath?
     @IBOutlet weak var quoteTopImage: UIImageView!
     @IBOutlet weak var quoteLabel: UILabel!
     @IBOutlet weak var quoteAuthor: UILabel!
@@ -26,5 +32,11 @@ class FavoriteTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    @IBAction func onClickFavorite(_ sender: Any) {
+        cellDelegate?.onClickFavoriteForFavoriteCellProtocol(index: index!.row)
+    }
+    @IBAction func onClickShare(_ sender: UIButton) {
+        cellDelegate?.onClickShareForFavoriteCellProtocol(index: index!.row)
+    }
+    
 }

@@ -24,6 +24,8 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        tableView.allowsSelection = false
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -40,7 +42,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             print(quotes[indexPath.row])
             cell?.quoteTopImage.tintColor = UIColor(named: "Color2")
             cell?.favoriteButtonOutlet.tintColor = UIColor.red
-            cell?.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "favorite_fill"), for: .normal)
+            cell?.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "heartfull"), for: .normal)
             cell?.shareButtonOutlet.tintColor = UIColor(named: "Color2")
         }else{
             cell?.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "heart"), for: .normal)
@@ -68,7 +70,7 @@ extension FirstViewController: HomeTableViewCustomCellProtocol{
     func onClickShareQuoteProtocolFunc(index: Int) {
         print("Share Button Clicked at \(index)")
         let item = [quotes[index]["quote"],"By \(String(describing: quotes[index]["author"]))"]
-        let shareSheet = UIActivityViewController(activityItems: item, applicationActivities: nil)
+        let shareSheet = UIActivityViewController(activityItems: item as [Any], applicationActivities: nil)
         self.present(shareSheet, animated: true, completion: nil)
     }
 }
