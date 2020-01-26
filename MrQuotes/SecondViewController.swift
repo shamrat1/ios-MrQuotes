@@ -49,7 +49,7 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.quoteTopImage.tintColor = UIColor(named: "Color2")
         cell.quoteLabel.text = (favorites[indexPath.row]["quote"] as! String)
         cell.quoteAuthor.text = (favorites[indexPath.row]["author"] as! String)
-        cell.favoriteOutlet.setImage(#imageLiteral(resourceName: "heartfull"), for: .normal)
+        cell.favoriteOutlet.setImage(#imageLiteral(resourceName: "favorite_fill"), for: .normal)
         cell.favoriteOutlet.tintColor = UIColor.red
         cell.shareOutlet.tintColor = UIColor(named: "Color2")
         
@@ -70,11 +70,7 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
 extension SecondViewController : FavoriteCellProtocol{
     func onClickFavoriteForFavoriteCellProtocol(index: Int) {
         print("Before Change: \(quotes[index]["isFavorite"] as! Int)")
-        if quotes[index]["isFavorite"] as! Int == 0 {
-            quotes[index]["isFavorite"] = 1
-        }else{
-            quotes[index]["isFavorite"] = 0
-        }
+        quotes[index]["isFavorite"] = 1
         self.viewWillAppear(true)
         print("After Change: \(quotes[index]["isFavorite"] as! Int)")
     }
