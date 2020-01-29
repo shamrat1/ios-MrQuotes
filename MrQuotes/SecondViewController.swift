@@ -81,7 +81,7 @@ extension SecondViewController : FavoriteCellProtocol{
     
     func onClickShareForFavoriteCellProtocol(index: Int) {
         print("Share Button Clicked at \(index)")
-        let item = [quotes[index]["quote"],"By \(String(describing: quotes[index]["author"]))"]
+        let item = [quotes[index]["quote"],"By \(String(describing: quotes[index]["author"]!))"]
         let shareSheet = UIActivityViewController(activityItems: item as [Any], applicationActivities: nil)
         self.present(shareSheet, animated: true, completion: nil)    }
     

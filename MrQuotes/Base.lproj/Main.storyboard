@@ -320,8 +320,8 @@
     <resources>
         <image name="ellipsis.circle" catalog="system" width="64" height="60"/>
         <image name="ellipsis.circle.fill" catalog="system" width="64" height="60"/>
-        <image name="heart" width="100" height="89"/>
         <image name="heart" catalog="system" width="64" height="54"/>
+        <image name="heart" width="100" height="89"/>
         <image name="heart.fill" catalog="system" width="64" height="54"/>
         <image name="house" catalog="system" width="64" height="54"/>
         <image name="house.fill" catalog="system" width="64" height="52"/>
