@@ -17,8 +17,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="4J2-Rn-9pS">
+                                <rect key="frame" x="8" y="8" width="359" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="bYu-h1-Xuw"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="300" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wvj-x6-sIO">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <rect key="frame" x="0.0" y="46" width="375" height="572"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="quoteCell" id="XIr-l4-FUJ" customClass="HomeTableViewCell" customModule="MrQuotes" customModuleProvider="target">
@@ -123,9 +130,12 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="wvj-x6-sIO" secondAttribute="bottom" id="F54-Dq-nZM"/>
+                            <constraint firstAttribute="trailing" secondItem="4J2-Rn-9pS" secondAttribute="trailing" constant="8" id="NJ7-SM-Vir"/>
+                            <constraint firstItem="4J2-Rn-9pS" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="8" id="UTJ-wn-qDk"/>
                             <constraint firstItem="wvj-x6-sIO" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="V5U-ii-CR4"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="wvj-x6-sIO" secondAttribute="trailing" id="mLk-dO-uS8"/>
-                            <constraint firstItem="wvj-x6-sIO" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="tKV-pO-Pln"/>
+                            <constraint firstItem="wvj-x6-sIO" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="46" id="tKV-pO-Pln"/>
+                            <constraint firstItem="4J2-Rn-9pS" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="8" id="xbA-6t-Ulm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>

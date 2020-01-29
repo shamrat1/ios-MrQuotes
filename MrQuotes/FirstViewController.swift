@@ -7,24 +7,32 @@
 //
 
 import UIKit
+import CoreData
 
-var quotes = [
-    ["quote":"Some random thing said by random people.","author":"Anonymous","isFavorite":1],
-    ["quote":"Some random thing said by random people to inspire random people.","author":"Steve Jobs","isFavorite":1],
-    ["quote":"Some random thing said by random people to inspre random people to do random things","author":"Bill Murray","isFavorite":0],
-    ["quote":"Some random thing said by random people to inspre random people to do random things that will bring random change.","author":"John Denver","isFavorite":0],
-    ["quote":"Some random thing said by random people to inspre random people to do random things that will bring random change to the random planet on universe.","author":"Sheikh Hasina","isFavorite":0]
-]
+//var quotes = [
+//    ["quote":"Some random thing said by random people.","author":"Anonymous","isFavorite":1],
+//    ["quote":"Some random thing said by random people to inspire random people.","author":"Steve Jobs","isFavorite":1],
+//    ["quote":"Some random thing said by random people to inspre random people to do random things","author":"Bill Murray","isFavorite":0],
+//    ["quote":"Some random thing said by random people to inspre random people to do random things that will bring random change.","author":"John Denver","isFavorite":0],
+//    ["quote":"Some random thing said by random people to inspre random people to do random things that will bring random change to the random planet on universe.","author":"Sheikh Hasina","isFavorite":0]
+//]
 
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-   
     
+    
+    
+    var quotes = [Quote]()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var quoteModel = [QuoteModel]()
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+//        quoteModel.append(QuoteModel(quote: "Hi", author: "hello"))
         
+        addItem()
+        loadItems()
         tableView.allowsSelection = false
     }
     
@@ -34,15 +42,15 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "quoteCell", for: indexPath) as? HomeTableViewCell
-        cell?.cellDelegate = self
+//        cell?.cellDelegate = self
         cell?.index = indexPath
-        cell?.quoteLabel.text = quotes[indexPath.row]["quote"] as? String
-        cell?.quoteAuthor.text = quotes[indexPath.row]["author"] as? String
-        if quotes[indexPath.row]["isFavorite"] as! Int == 1{
+        cell?.quoteLabel.text = quotes[indexPath.row].quotes
+        cell?.quoteAuthor.text = quotes[indexPath.row].author
+        if quotes[indexPath.row].isFavorite {
             print(quotes[indexPath.row])
             cell?.quoteTopImage.tintColor = UIColor(named: "Color2")
             cell?.favoriteButtonOutlet.tintColor = UIColor.red
-            cell?.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "favorite_fill"), for: .normal)
+            cell?.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "heartfull"), for: .normal)
             cell?.shareButtonOutlet.tintColor = UIColor(named: "Color2")
         }else{
             cell?.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "heart"), for: .normal)
@@ -52,26 +60,66 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         return cell!
     }
-}
-
-extension FirstViewController: HomeTableViewCustomCellProtocol{
-    func onClickFavoriteQuoteProtocolFunc(index: Int) {
-        
-        print("Before Change: \(quotes[index]["isFavorite"] as! Int)")
-        if quotes[index]["isFavorite"] as! Int == 0 {
-            quotes[index]["isFavorite"] = 1
-        }else{
-            quotes[index]["isFavorite"] = 0
+    
+    
+    
+    // MARK: - Custome Function
+    
+    func saveItem() {
+        do {
+            try context.save()
+        } catch {
+            print("Error in saving item : \(error)")
         }
+        
         self.tableView.reloadData()
-        print("After Change: \(quotes[index]["isFavorite"] as! Int)")
     }
     
-    func onClickShareQuoteProtocolFunc(index: Int) {
-        print("Share Button Clicked at \(index)")
-        let item = [quotes[index]["quote"],"By \(String(describing: quotes[index]["author"]))"]
-        let shareSheet = UIActivityViewController(activityItems: item as [Any], applicationActivities: nil)
-        self.present(shareSheet, animated: true, completion: nil)
+    func loadItems(with request : NSFetchRequest<Quote> = Quote.fetchRequest()) {
+        
+        do {
+            quotes = try context.fetch(request)
+        } catch {
+            print("Error in load item : \(error)")
+        }
+        
+        self.tableView.reloadData()
+    }
+    
+    func addItem() {
+        let newItem = Quote(context: self.context)
+        newItem.quotes = "text"
+        newItem.author = "false"
+        newItem.isFavorite = false
+        self.quotes.append(newItem)
     }
 }
+
+//extension FirstViewController: HomeTableViewCustomCellProtocol{
+//
+//    func onClickFavoriteQuoteProtocolFunc(index: Int) {
+//
+//        print("Before Change: \(quotes[index]["isFavorite"] as! Int)")
+//        if quotes[index]["isFavorite"] as! Int == 0 {
+//            quotes[index]["isFavorite"] = 1
+//        }else{
+//            quotes[index]["isFavorite"] = 0
+//        }
+//        self.tableView.reloadData()
+//        print("After Change: \(quotes[index]["isFavorite"] as! Int)")
+//    }
+//
+//    func onClickShareQuoteProtocolFunc(index: Int) {
+//        print("Share Button Clicked at \(index)")
+//        let item = [quotes[index]["quote"],"By \(String(describing: quotes[index]["author"]))"]
+//        let shareSheet = UIActivityViewController(activityItems: item as [Any], applicationActivities: nil)
+//        self.present(shareSheet, animated: true, completion: nil)
+//    }
+//
+//
+//
+//
+//
+//}
+
 

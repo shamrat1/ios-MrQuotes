@@ -9,7 +9,13 @@
 import UIKit
 
 class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    var quotes = [
+        ["quote":"Some random thing said by random people.","author":"Anonymous","isFavorite":1],
+        ["quote":"Some random thing said by random people to inspire random people.","author":"Steve Jobs","isFavorite":1],
+        ["quote":"Some random thing said by random people to inspre random people to do random things","author":"Bill Murray","isFavorite":0],
+        ["quote":"Some random thing said by random people to inspre random people to do random things that will bring random change.","author":"John Denver","isFavorite":0],
+        ["quote":"Some random thing said by random people to inspre random people to do random things that will bring random change to the random planet on universe.","author":"Sheikh Hasina","isFavorite":0]
+    ]
     var favorites: [[String:Any]] = []
     @IBOutlet weak var tableView: UITableView!
    // for refreshing
@@ -49,7 +55,7 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.quoteTopImage.tintColor = UIColor(named: "Color2")
         cell.quoteLabel.text = (favorites[indexPath.row]["quote"] as! String)
         cell.quoteAuthor.text = (favorites[indexPath.row]["author"] as! String)
-        cell.favoriteOutlet.setImage(#imageLiteral(resourceName: "favorite_fill"), for: .normal)
+        cell.favoriteOutlet.setImage(#imageLiteral(resourceName: "heartfull"), for: .normal)
         cell.favoriteOutlet.tintColor = UIColor.red
         cell.shareOutlet.tintColor = UIColor(named: "Color2")
         
@@ -69,8 +75,9 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
 }
 extension SecondViewController : FavoriteCellProtocol{
     func onClickFavoriteForFavoriteCellProtocol(index: Int) {
-        print("Before Change: \(quotes[index]["isFavorite"] as! Int)")
-        quotes[index]["isFavorite"] = 1
+        print()
+//        print("Before Change: \(quotes[index]["isFavorite"] as! Int)")
+        quotes[index]["isFavorite"] = 0
         self.viewWillAppear(true)
         print("After Change: \(quotes[index]["isFavorite"] as! Int)")
     }

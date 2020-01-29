@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0495739D23E1534800FAE50B /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0495739B23E1534800FAE50B /* DataModel.xcdatamodeld */; };
+		0495739F23E169BF00FAE50B /* QuoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0495739E23E169BF00FAE50B /* QuoteModel.swift */; };
 		2118C12C23D8B3E7003BEAFB /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2118C12B23D8B3E7003BEAFB /* FavoriteTableViewCell.swift */; };
 		219C0CCF23D7512800B6014D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219C0CCE23D7512800B6014D /* AppDelegate.swift */; };
 		219C0CD123D7512800B6014D /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219C0CD023D7512800B6014D /* FirstViewController.swift */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0495739C23E1534800FAE50B /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		0495739E23E169BF00FAE50B /* QuoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteModel.swift; sourceTree = "<group>"; };
 		2118C12B23D8B3E7003BEAFB /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		219C0CCB23D7512800B6014D /* MrQuotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MrQuotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		219C0CCE23D7512800B6014D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +76,8 @@
 				21AD436623D800940024F8C5 /* CustomUIView.swift */,
 				21AD436823D807470024F8C5 /* HomeTableViewCell.swift */,
 				2118C12B23D8B3E7003BEAFB /* FavoriteTableViewCell.swift */,
+				0495739B23E1534800FAE50B /* DataModel.xcdatamodeld */,
+				0495739E23E169BF00FAE50B /* QuoteModel.swift */,
 			);
 			path = MrQuotes;
 			sourceTree = "<group>";
@@ -150,6 +156,8 @@
 				219C0CD323D7512800B6014D /* SecondViewController.swift in Sources */,
 				2118C12C23D8B3E7003BEAFB /* FavoriteTableViewCell.swift in Sources */,
 				21AD436923D807470024F8C5 /* HomeTableViewCell.swift in Sources */,
+				0495739D23E1534800FAE50B /* DataModel.xcdatamodeld in Sources */,
+				0495739F23E169BF00FAE50B /* QuoteModel.swift in Sources */,
 				21AD436723D800940024F8C5 /* CustomUIView.swift in Sources */,
 				219C0CCF23D7512800B6014D /* AppDelegate.swift in Sources */,
 				219C0CD123D7512800B6014D /* FirstViewController.swift in Sources */,
@@ -352,6 +360,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0495739B23E1534800FAE50B /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0495739C23E1534800FAE50B /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 0495739C23E1534800FAE50B /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 219C0CC323D7512800B6014D /* Project object */;
 }
