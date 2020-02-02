@@ -98,10 +98,23 @@ extension FirstViewController: HomeTableViewCustomCellProtocol,UISearchBarDelega
     func onClickFavoriteQuoteProtocolFunc(index: Int) {
 
 //        print("Before Change: \(quotes[index]["isFavorite"] as! Int)")
+        print(quotes[index])
         if quotes[index].isFavorite == false {
-            quotes[index].isFavorite = true
+            do {
+                quotes[index].isFavorite = true
+                try context.save()
+                print("updated!")
+            } catch {
+                print("error updating")
+            }
         }else{
-            quotes[index].isFavorite = false
+            do {
+                quotes[index].isFavorite = false
+                try context.save()
+                print("updated!")
+            } catch {
+                print("error updating")
+            }
         }
         self.tableView.reloadData()
 //        print("After Change: \(quotes[index]["isFavorite"] as! Int)")
@@ -109,7 +122,7 @@ extension FirstViewController: HomeTableViewCustomCellProtocol,UISearchBarDelega
 
     func onClickShareQuoteProtocolFunc(index: Int) {
         print("Share Button Clicked at \(index)")
-        let item = [quotes[index].quote,"By \(String(describing: quotes[index].author))"]
+        let item = [quotes[index].quote,"By \(String(describing: quotes[index].author!))"]
         let shareSheet = UIActivityViewController(activityItems: item as [Any], applicationActivities: nil)
         self.present(shareSheet, animated: true, completion: nil)
     }
