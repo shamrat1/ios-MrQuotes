@@ -17,6 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        preloadData()
         return true
     }
 
@@ -40,6 +43,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    private func preloadData(){
+        let userDefault = UserDefaults.standard
+        if userDefault.bool(forKey: "isPreloaded") == false {
+            print("inserting data.")
+            let data = [
+                ["quote":"The greatest glory in living lies not in never falling, but in rising every time we fall.","author":"Nelson Mendela","isFavorite":false],
+                ["quote":"The way to get started is to quit talking and begin doing.","author":"Walt Disney","isFavorite":false],
+                ["quote":"Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma – which is living with the results of other people's thinking.","author":"Steve Jobs","isFavorite":false],
+                ["quote":"If life were predictable it would cease to be life, and be without flavor.","author":"Eleanor Roosevelt","isFavorite":false],
+                ["quote":"If you look at what you have in life, you'll always have more. If you look at what you don't have in life, you'll never have enough.","author":"Oprah Winfrey","isFavorite":false],
+                ["quote":"If you set your goals ridiculously high and it's a failure, you will fail above everyone else's success.","author":"James Cameroon","isFavorite":false],
+                ["quote":"Life is what happens when you're busy making other plans.","author":"John Lennon","isFavorite":false],
+                ["quote":"Spread love everywhere you go. Let no one ever come to you without leaving happier.","author":"Mother Teresa","isFavorite":false],
+                ["quote":"When you reach the end of your rope, tie a knot in it and hang on.","author":"Franklin D. Roosevelt","isFavorite":false],
+                ["quote":"Always remember that you are absolutely unique. Just like everyone else.","author":"Margaret Mead","isFavorite":false],
+                ["quote":"Don't judge each day by the harvest you reap but by the seeds that you plant.","author":"Robert Louis Stevenson","isFavorite":false],
+                ["quote":"Whoever is happy will make others happy too.","author":"Anna Frank","isFavorite":false]
+            ]
+            let backgroundContext = persistentContainer.newBackgroundContext()
+            
+            do {
+                for single in data{
+                    let quote = Quote(context: backgroundContext)
+                    quote.quote = single["quote"]! as? String
+                    quote.author = single["author"]! as? String
+                    quote.isFavorite = single["isFavorite"]! as! Bool
+                    try backgroundContext.save()
+                }
+                userDefault.set(true, forKey: "isPreloaded")
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
     }
     
     // MARK: - Core Data stack

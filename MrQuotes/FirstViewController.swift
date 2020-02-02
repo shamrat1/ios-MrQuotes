@@ -19,8 +19,6 @@ import CoreData
 
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    
-    
     var quotes = [Quote]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var quoteModel = [QuoteModel]()
@@ -31,7 +29,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // Do any additional setup after loading the view, typically from a nib.
 //        quoteModel.append(QuoteModel(quote: "Hi", author: "hello"))
         
-        addItem()
+//        addItem()
         loadItems()
         tableView.allowsSelection = false
     }
@@ -42,9 +40,9 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "quoteCell", for: indexPath) as? HomeTableViewCell
-//        cell?.cellDelegate = self
+        cell?.cellDelegate = self
         cell?.index = indexPath
-        cell?.quoteLabel.text = quotes[indexPath.row].quotes
+        cell?.quoteLabel.text = quotes[indexPath.row].quote
         cell?.quoteAuthor.text = quotes[indexPath.row].author
         if quotes[indexPath.row].isFavorite {
             print(quotes[indexPath.row])
@@ -88,38 +86,54 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func addItem() {
         let newItem = Quote(context: self.context)
-        newItem.quotes = "text"
+        newItem.quote = "text"
         newItem.author = "false"
         newItem.isFavorite = false
         self.quotes.append(newItem)
     }
 }
 
-//extension FirstViewController: HomeTableViewCustomCellProtocol{
-//
-//    func onClickFavoriteQuoteProtocolFunc(index: Int) {
-//
+extension FirstViewController: HomeTableViewCustomCellProtocol,UISearchBarDelegate{
+
+    func onClickFavoriteQuoteProtocolFunc(index: Int) {
+
 //        print("Before Change: \(quotes[index]["isFavorite"] as! Int)")
-//        if quotes[index]["isFavorite"] as! Int == 0 {
-//            quotes[index]["isFavorite"] = 1
-//        }else{
-//            quotes[index]["isFavorite"] = 0
-//        }
-//        self.tableView.reloadData()
+        if quotes[index].isFavorite == false {
+            quotes[index].isFavorite = true
+        }else{
+            quotes[index].isFavorite = false
+        }
+        self.tableView.reloadData()
 //        print("After Change: \(quotes[index]["isFavorite"] as! Int)")
-//    }
-//
-//    func onClickShareQuoteProtocolFunc(index: Int) {
-//        print("Share Button Clicked at \(index)")
-//        let item = [quotes[index]["quote"],"By \(String(describing: quotes[index]["author"]))"]
-//        let shareSheet = UIActivityViewController(activityItems: item as [Any], applicationActivities: nil)
-//        self.present(shareSheet, animated: true, completion: nil)
-//    }
-//
-//
-//
-//
-//
-//}
+    }
+
+    func onClickShareQuoteProtocolFunc(index: Int) {
+        print("Share Button Clicked at \(index)")
+        let item = [quotes[index].quote,"By \(String(describing: quotes[index].author))"]
+        let shareSheet = UIActivityViewController(activityItems: item as [Any], applicationActivities: nil)
+        self.present(shareSheet, animated: true, completion: nil)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("search terms inserted")
+        let request : NSFetchRequest<Quote> = Quote.fetchRequest()
+        request.predicate = NSPredicate(format: "quote CONTAINS %@", searchBar.text!)
+        
+        loadItems(with: request)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count == 0{
+            loadItems()
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+        }
+    }
+
+
+
+
+}
 
 

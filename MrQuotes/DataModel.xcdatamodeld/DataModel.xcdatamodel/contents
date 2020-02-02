@@ -3,7 +3,7 @@
     <entity name="Quote" representedClassName=".Quote" syncable="YES" codeGenerationType="class">
         <attribute name="author" attributeType="String"/>
         <attribute name="isFavorite" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="quotes" attributeType="String"/>
+        <attribute name="quote" attributeType="String"/>
     </entity>
     <elements>
         <element name="Quote" positionX="-63" positionY="-18" width="128" height="88"/>

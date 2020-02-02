@@ -14,7 +14,6 @@ class QuoteModel {
     var isFavorite = false
     
     init(quote: String, author: String) {
-        
         self.quote = quote
         self.author = author
     }
