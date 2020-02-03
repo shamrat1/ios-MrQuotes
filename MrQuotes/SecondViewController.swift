@@ -14,7 +14,7 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var favorites: [[String:Any]] = []
     @IBOutlet weak var tableView: UITableView!
     let delegate = UIApplication.shared.delegate as! AppDelegate
-    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
    // for refreshing
 //    lazy var refreshControl: UIRefreshControl = {
 //        let refreshControl = UIRefreshControl()
@@ -32,15 +32,9 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         loadItems()
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        favorites = []
-//        for object in quotes{
-//            if object["isFavorite"] as? Bool == true{
-//                favorites.append(object)
-//            }
-//        }
-//        self.tableView.reloadData()
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        loadItems()
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return quotes.count
@@ -48,22 +42,17 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath) as? FavoriteTableViewCell
-        //        cell?.cellDelegate = self
+        cell?.cellDelegate = self
         cell?.index = indexPath
         cell?.quoteLabel.text = quotes[indexPath.row].quote
         cell?.quoteAuthor.text = quotes[indexPath.row].author
-        if quotes[indexPath.row].isFavorite {
-            print(quotes[indexPath.row])
-            cell?.quoteTopImage.tintColor = UIColor(named: "Color2")
-            cell?.favoriteOutlet.tintColor = UIColor.red
-            cell?.favoriteOutlet.setImage(#imageLiteral(resourceName: "heartfull"), for: .normal)
-            cell?.shareOutlet.tintColor = UIColor(named: "Color2")
-        }else{
-            cell?.favoriteOutlet.setImage(#imageLiteral(resourceName: "heart"), for: .normal)
-            cell?.quoteTopImage.tintColor = UIColor(named: "Color1")
-            cell?.favoriteOutlet.tintColor = UIColor(named: "Color1")
-            cell?.shareOutlet.tintColor = UIColor(named: "Color1")
-        }
+       
+        print(quotes[indexPath.row])
+        cell?.quoteTopImage.tintColor = UIColor(named: "Color2")
+        cell?.favoriteOutlet.tintColor = UIColor.red
+        cell?.favoriteOutlet.setImage(#imageLiteral(resourceName: "favorite_fill"), for: .normal)
+        cell?.shareOutlet.tintColor = UIColor(named: "Color2")
+        
         return cell!
     }
     func loadItems(with request : NSFetchRequest<Quote> = Quote.fetchRequest()) {
@@ -89,20 +78,26 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
 //    }
     
 }
-//extension SecondViewController : FavoriteCellProtocol{
-//    func onClickFavoriteForFavoriteCellProtocol(index: Int) {
-//        print()
-////        print("Before Change: \(quotes[index]["isFavorite"] as! Int)")
-//        quotes[index]["isFavorite"] = 0
-//        self.viewWillAppear(true)
+extension SecondViewController : FavoriteCellProtocol{
+    func onClickFavoriteForFavoriteCellProtocol(index: Int) {
+        print()
+//        print("Before Change: \(quotes[index]["isFavorite"] as! Int)")
+        do {
+            quotes[index].isFavorite = false
+            try context.save()
+            print("updated!")
+        } catch {
+            print("error updating")
+        }
+        self.viewWillAppear(true)
 //        print("After Change: \(quotes[index]["isFavorite"] as! Int)")
-//    }
-//    
-//    func onClickShareForFavoriteCellProtocol(index: Int) {
-//        print("Share Button Clicked at \(index)")
-//        let item = [quotes[index]["quote"],"By \(String(describing: quotes[index]["author"]!))"]
-//        let shareSheet = UIActivityViewController(activityItems: item as [Any], applicationActivities: nil)
-//        self.present(shareSheet, animated: true, completion: nil)    }
-//    
-//    
-//}
+    }
+    
+    func onClickShareForFavoriteCellProtocol(index: Int) {
+        print("Share Button Clicked at \(index)")
+        let item = [quotes[index].quote!,"By \(String(describing: quotes[index].author!))"]
+        let shareSheet = UIActivityViewController(activityItems: item as [Any], applicationActivities: nil)
+        self.present(shareSheet, animated: true, completion: nil)    }
+    
+    
+}

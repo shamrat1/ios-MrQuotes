@@ -48,10 +48,10 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             print(quotes[indexPath.row])
             cell?.quoteTopImage.tintColor = UIColor(named: "Color2")
             cell?.favoriteButtonOutlet.tintColor = UIColor.red
-            cell?.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "heartfull"), for: .normal)
+            cell?.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "favorite_fill"), for: .normal)
             cell?.shareButtonOutlet.tintColor = UIColor(named: "Color2")
         }else{
-            cell?.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "heart"), for: .normal)
+            cell?.favoriteButtonOutlet.setImage(#imageLiteral(resourceName: "favorite_outline"), for: .normal)
             cell?.quoteTopImage.tintColor = UIColor(named: "Color1")
             cell?.favoriteButtonOutlet.tintColor = UIColor(named: "Color1")
             cell?.shareButtonOutlet.tintColor = UIColor(named: "Color1")
