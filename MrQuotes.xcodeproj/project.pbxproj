@@ -47,6 +47,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		218DDEEE23EA7CC40086DD5B /* Support */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		218DDEEF23EA7CD70086DD5B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		218DDEF023EA7CE00086DD5B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		219C0CC223D7512800B6014D = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +87,9 @@
 		219C0CCD23D7512800B6014D /* MrQuotes */ = {
 			isa = PBXGroup;
 			children = (
+				218DDEF023EA7CE00086DD5B /* View */,
+				218DDEEF23EA7CD70086DD5B /* Controller */,
+				218DDEEE23EA7CC40086DD5B /* Support */,
 				219C0CCE23D7512800B6014D /* AppDelegate.swift */,
 				219C0CD023D7512800B6014D /* FirstViewController.swift */,
 				219C0CD223D7512800B6014D /* SecondViewController.swift */,
